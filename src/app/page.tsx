@@ -20,12 +20,18 @@ export default function LandingPage() {
     event.preventDefault();
     setError('');
     setSubmitting(true);
-    const result = mode === 'register'
-      ? await registerUser({ id: generateId(), name: name.trim(), email, targetExam: 'engineering', examTracks, coachingBatch: 'EAP26 Combo', createdAt: new Date().toISOString() }, password)
-      : await loginUser(email, password);
-    setSubmitting(false);
-    if (result) { setError(result); return; }
-    router.push('/dashboard');
+    try {
+      const result = mode === 'register'
+        ? await registerUser({ id: generateId(), name: name.trim(), email, targetExam: 'engineering', examTracks, coachingBatch: 'EAP26 Combo', createdAt: new Date().toISOString() }, password)
+        : await loginUser(email, password);
+      if (result) { setError(result); return; }
+      router.push('/dashboard');
+    } catch (error) {
+      console.error('Authentication request failed:', error);
+      setError('Unable to connect to the server. Check the deployment database settings and try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return <div className={styles.landing}>
