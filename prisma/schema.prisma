@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "mysql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  passwordHash  String
+  avatarUrl     String?
+  targetExam    String
+  examTracks    Json
+  coachingBatch String
+  role          String   @default("user")
+  createdAt     DateTime @default(now())
+
+  progress         TaskProgress[]
+  examScores       ExamScore[]
+  calendarEvents   CalendarEvent[]
+  timerSessions    TimerSession[]
+  personalExams    PersonalExamRecord[]
+  customExams      CustomCalendarExam[]
+  customChapters   CustomRevisionChapter[]
+  studyDates       StudyDate[]
+}
+
+model TaskProgress {
+  id              String   @id @default(uuid())
+  userId          String
+  chapterId       String
+  status          String
+  confidenceLevel Int
+  revisionCount   Int
+  lastRevised     DateTime?
+  notes           String?
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ExamScore {
+  id              String   @id @default(uuid())
+  userId          String
+  examId          String
+  mcqObtained     Float
+  writtenObtained Float
+  totalObtained   Float
+  percentage      Float
+  recordedAt      DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CalendarEvent {
+  id            String   @id @default(uuid())
+  userId        String
+  chapterId     String?
+  scheduledDate String
+  eventType     String
+  title         String
+  color         String
+  completed     Boolean  @default(false)
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TimerSession {
+  id                 String   @id @default(uuid())
+  userId             String
+  chapterId          String?
+  timerType          String
+  durationSeconds    Int
+  intervalsCompleted Int?
+  startedAt          DateTime
+  endedAt            DateTime
+  mcqAnswered        Int?
+  writtenAnswered    Int?
+
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PersonalExamRecord {
+  id                String   @id @default(uuid())
+  userId            String
+  name              String
+  mode              String
+  plannedMcq        Int
+  plannedWritten    Int
+  mcqAnswered       Int
+  writtenAnswered   Int
+  mcqMarks          Float
+  writtenMarks      Float
+  totalMcqMarks     Float
+  totalWrittenMarks Float
+  durationSeconds   Int
+  createdAt         DateTime @default(now())
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CustomCalendarExam {
+  id              String   @id @default(uuid())
+  userId          String
+  name            String
+  examDate        String
+  subjectsCovered String
+  totalMarks      Float
+  notes           String?
+  createdAt       DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CustomRevisionChapter {
+  id          String   @id @default(uuid())
+  userId      String
+  subjectCode String
+  paper       String
+  title       String
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StudyDate {
+  id     String @id @default(uuid())
+  userId String
+  date   String
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([userId, date])
+}

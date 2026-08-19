@@ -1,0 +1,35 @@
+.container { max-width: 900px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+.header h1 { font-size: 1.75rem; margin: 0; }
+.range { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem; }
+.progress { text-align: right; }
+.progressText { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); }
+.progressBar { width: 180px; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-top: 0.4rem; }
+.progressFill { height: 100%; background: linear-gradient(90deg, var(--accent), #a78bfa); border-radius: 3px; }
+.subjectFilters { display: flex; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.filterBtn { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-muted); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.8rem; cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-sans); }
+.filterBtn:hover { border-color: var(--border-hover); }
+.filterOn { background: rgba(255,255,255,0.08); border-color: var(--fc); color: var(--text-primary); }
+.timeline { position: relative; padding-left: 1rem; }
+.timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), var(--border)); }
+.timelineDay { display: flex; gap: 1rem; padding: 0.5rem 0; align-items: flex-start; position: relative; }
+.timelineDay.isPast { opacity: 0.5; }
+.timelineDay.isToday { opacity: 1; }
+.dateSide { width: 90px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; padding-right: 1rem; position: relative; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); position: absolute; right: -6px; top: 6px; z-index: 1; }
+.dotToday { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); animation: pulse 2s infinite; }
+.dateText { font-size: 0.8rem; font-weight: 600; }
+.dayText { font-size: 0.7rem; color: var(--text-muted); }
+.line { display: none; }
+.eventSide { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; padding-left: 0.5rem; min-height: 40px; }
+.noEvent { font-size: 0.75rem; color: var(--text-muted); font-style: italic; padding: 0.25rem 0; }
+.eventCard { background: var(--bg-glass); border: 1px solid var(--border); border-left: 3px solid; border-radius: var(--radius-sm); padding: 0.6rem 0.75rem; font-size: 0.85rem; }
+.examEvent { background: rgba(245,158,11,0.05); }
+.eventBadge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem; }
+.eventDetail { font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4; }
+.footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.footer h3 { font-size: 1rem; margin-bottom: 1rem; color: var(--text-secondary); }
+.formatGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+.formatCard { background: var(--bg-glass); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 5px var(--accent-glow); } 50% { box-shadow: 0 0 15px var(--accent-glow); } }
+@media (max-width: 640px) { .formatGrid { grid-template-columns: 1fr; } .dateSide { width: 70px; } }

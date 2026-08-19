@@ -1,0 +1,7 @@
+.container { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.svg { transform: rotate(-90deg); }
+.bg { fill: none; }
+.ring { fill: none; stroke-linecap: round; transition: stroke-dashoffset 1s ease-out; }
+.content { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.pct { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+.label { font-size: 0.7rem; color: var(--text-secondary); margin-top: 2px; }

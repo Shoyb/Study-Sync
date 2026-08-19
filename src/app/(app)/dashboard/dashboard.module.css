@@ -1,0 +1,40 @@
+.dashboard { max-width: 1200px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.header h1 { font-size: 1.75rem; margin: 0; }
+.date { color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.9rem; }
+.quote { font-style: italic; color: var(--text-muted); font-size: 0.85rem; max-width: 300px; text-align: right; }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+.card { background: var(--bg-glass); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; animation: fadeIn 0.5s ease forwards; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.card h2 { font-size: 1rem; margin: 0 0 1rem; color: var(--text-secondary); font-weight: 600; }
+.progressCard { grid-column: span 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+.progressText { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+.subjectsCard { grid-column: span 5; }
+.subjectList { display: flex; flex-direction: column; gap: 0.75rem; }
+.subjectRow { display: flex; align-items: center; gap: 0.5rem; }
+.subIcon { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+.subName { font-size: 0.85rem; width: 80px; color: var(--text-secondary); }
+.subBar { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.subFill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+.subCount { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); width: 40px; text-align: right; }
+.scheduleCard { grid-column: span 4; }
+.empty { color: var(--text-muted); font-size: 0.85rem; }
+.schedList { display: flex; flex-direction: column; gap: 0.5rem; }
+.schedItem { padding: 0.6rem 0.75rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); border-left: 3px solid var(--accent); font-size: 0.85rem; }
+.schedTopic { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 2px; }
+.examsCard { grid-column: span 5; }
+.examList { display: flex; flex-direction: column; gap: 0.6rem; }
+.examItem { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0.75rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); font-size: 0.85rem; }
+.examSub { font-size: 0.75rem; color: var(--text-muted); }
+.countdown { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.streakCard { grid-column: span 3; display: flex; align-items: center; gap: 1rem; justify-content: center; }
+.fire { font-size: 2.5rem; }
+.streakNum { font-family: var(--font-mono); font-size: 2rem; font-weight: 800; display: block; line-height: 1; }
+.streakLabel { font-size: 0.75rem; color: var(--text-muted); }
+.actionsCard { grid-column: span 4; }
+.actionBtns { display: flex; flex-direction: column; gap: 0.5rem; }
+.actionBtns a { text-align: center; }
+.revisionCard { grid-column: span 12; }
+.revItem { padding: 0.5rem 0.75rem; background: rgba(245,158,11,0.08); border-left: 3px solid var(--status-in-progress); border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 0.4rem; }
+@media (max-width: 1024px) { .progressCard, .subjectsCard, .scheduleCard, .examsCard, .streakCard, .actionsCard { grid-column: span 6; } }
+@media (max-width: 768px) { .header { flex-direction: column; align-items: flex-start; } .quote { text-align: left; } .progressCard, .subjectsCard, .scheduleCard, .examsCard, .streakCard, .actionsCard { grid-column: span 12; } }

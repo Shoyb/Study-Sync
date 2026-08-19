@@ -1,0 +1,1 @@
+.container { max-width: 520px; margin: 8vh auto; }.card { display: grid; gap: 1rem; padding: 2rem; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--bg-glass); }.card h1 { font-size: 1.5rem; }.card p { color: var(--text-secondary); font-size: 0.85rem; }.error { color: #fca5a5; font-size: 0.8rem; }

@@ -1,0 +1,26 @@
+.container { max-width: 1000px; margin: 0 auto; }
+.pageTitle { font-size: 1.75rem; margin: 0 0 1.5rem; }
+.filters { margin-bottom: 1rem; }
+.tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.tab { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-secondary); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-sans); }
+.tab:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.tab.active { background: var(--accent-subtle); border-color: var(--accent); color: var(--text-primary); }
+.controls { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.stats { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); }
+.green { color: var(--status-completed); }
+.amber { color: var(--status-in-progress); }
+.list { display: flex; flex-direction: column; gap: 0.6rem; }
+.card { background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border); border-left: 4px solid var(--sc); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition-fast); animation: fadeIn 0.3s ease; }
+.card:hover { border-color: var(--border-hover); }
+.cardHeader { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; cursor: pointer; gap: 1rem; }
+.cardLeft { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+.code { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: var(--sc); white-space: nowrap; }
+.title { font-weight: 600; font-size: 0.9rem; }
+.part { font-size: 0.75rem; color: var(--text-muted); margin-left: 0.5rem; }
+.cardRight { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.chevron { font-size: 0.6rem; color: var(--text-muted); }
+.cardBody { padding: 0 1rem 1rem; border-top: 1px solid var(--border); animation: fadeIn 0.2s ease; }
+.topics { font-size: 0.8rem; color: var(--text-secondary); margin: 0.75rem 0 0.5rem; line-height: 1.5; }
+.meta { display: flex; gap: 1.25rem; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; flex-wrap: wrap; }
+.empty { text-align: center; color: var(--text-muted); padding: 2rem; }
+@media (max-width: 640px) { .cardHeader { flex-direction: column; align-items: flex-start; } .cardRight { width: 100%; justify-content: space-between; } }
