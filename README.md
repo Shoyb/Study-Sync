@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+The app uses Prisma with a Supabase PostgreSQL database for accounts and study data.
+
 ```bash
 npm run dev
 # or
@@ -15,6 +17,15 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Supabase environment variables
+
+Set these variables in `.env` locally and in the Vercel project settings:
+
+- `DATABASE_URL`: the Supabase pooler connection string on port `6543`, with `pgbouncer=true` and `connection_limit=1`.
+- `DIRECT_URL`: the Supabase direct database connection string on port `5432`.
+
+After setting the variables, run `npx prisma db push` against a new Supabase database, then redeploy Vercel.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
